@@ -118,27 +118,19 @@ const AudioRecorder = ({ onTranscriptionReceived }: AudioRecorderProps) => {
       <div className="flex flex-col items-center space-y-6">
         <div className="relative w-28 h-28 flex items-center justify-center">
           <div 
-            className={`absolute inset-0 rounded-full transition-all duration-500 ${
-              isRecording 
-                ? 'bg-red-500/30 animate-[pulse_1.5s_ease-in-out_infinite] scale-110' 
-                : 'bg-secondary'
-            }`}
+            className={`absolute inset-0 rounded-full ${isRecording ? 'bg-destructive/20 animate-pulse-recording' : 'bg-secondary'}`}
           />
           <Button
             variant={isRecording ? "destructive" : "default"}
             size="icon"
-            className={`w-20 h-20 rounded-full shadow-lg transition-all duration-300 ${
-              isRecording 
-                ? 'scale-95 animate-[bounce_0.8s_ease-in-out_infinite] bg-red-600 hover:bg-red-700' 
-                : 'hover:scale-105'
-            }`}
+            className={`w-20 h-20 rounded-full shadow-lg transition-all duration-300 ${isRecording ? 'scale-95' : 'hover:scale-105'}`}
             onClick={isRecording ? stopRecording : startRecording}
             disabled={isProcesing}
           >
             {isProcesing ? (
               <Loader2 className="h-8 w-8 animate-spin" />
             ) : isRecording ? (
-              <Square className="h-8 w-8 animate-pulse" />
+              <Square className="h-8 w-8" />
             ) : (
               <Mic className="h-8 w-8" />
             )}
@@ -150,11 +142,10 @@ const AudioRecorder = ({ onTranscriptionReceived }: AudioRecorderProps) => {
             {visualizerBars.map((height, index) => (
               <div 
                 key={index}
-                className={`bar ${index % 2 === 0 ? 'bg-red-500' : 'bg-red-400'} animate-wave`}
+                className="bar animate-wave" 
                 style={{ 
-                  height: `${height * 40}px`,
-                  animationDelay: `${index * 0.05}s`,
-                  animationDuration: `${0.8 + Math.random() * 0.4}s`
+                  height: `${height * 30}px`,
+                  animationDelay: `${index * 0.05}s`
                 }}
               />
             ))}

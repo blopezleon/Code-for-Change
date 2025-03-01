@@ -3,13 +3,8 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Lightbulb, Loader2 } from 'lucide-react';
 
-interface RecommendationPanelProps {
-  transcription: string;
-  isReady: boolean;
-}
-
-const RecommendationPanel = ({ transcription, isReady }: RecommendationPanelProps) => {
-  const [recommendations, setRecommendations] = useState<string[]>([]);
+const RecommendationPanel = ({ transcription, isReady }) => {
+  const [recommendations, setRecommendations] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   
   useEffect(() => {

@@ -3,12 +3,7 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2 } from 'lucide-react';
 
-interface TranscriptionDisplayProps {
-  text: string;
-  onProcessed: (processed: boolean) => void;
-}
-
-const TranscriptionDisplay = ({ text, onProcessed }: TranscriptionDisplayProps) => {
+const TranscriptionDisplay = ({ text, onProcessed }) => {
   const [displayText, setDisplayText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   

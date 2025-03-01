@@ -8,7 +8,7 @@ const Index = () => {
   const [transcription, setTranscription] = useState("");
   const [isTranscriptionProcessed, setIsTranscriptionProcessed] = useState(false);
 
-  const handleTranscriptionReceived = (text: string) => {
+  const handleTranscriptionReceived = (text) => {
     setTranscription(text);
   };
 

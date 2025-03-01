@@ -4,19 +4,15 @@ import { Button } from '@/components/ui/button';
 import { Mic, Square, Loader2 } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 
-interface AudioRecorderProps {
-  onTranscriptionReceived: (text: string) => void;
-}
-
-const AudioRecorder = ({ onTranscriptionReceived }: AudioRecorderProps) => {
+const AudioRecorder = ({ onTranscriptionReceived }) => {
   const [isRecording, setIsRecording] = useState(false);
   const [isProcesing, setIsProcessing] = useState(false);
-  const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-  const audioChunksRef = useRef<Blob[]>([]);
-  const [visualizerBars, setVisualizerBars] = useState<number[]>(Array(20).fill(1));
+  const [audioBlob, setAudioBlob] = useState(null);
+  const mediaRecorderRef = useRef(null);
+  const audioChunksRef = useRef([]);
+  const [visualizerBars, setVisualizerBars] = useState(Array(20).fill(1));
   
-  const animationRef = useRef<number | null>(null);
+  const animationRef = useRef(null);
   
   useEffect(() => {
     // Cleanup animation on unmount
@@ -95,7 +91,7 @@ const AudioRecorder = ({ onTranscriptionReceived }: AudioRecorderProps) => {
     }
   };
   
-  const processAudio = async (audioBlob: Blob) => {
+  const processAudio = async (audioBlob) => {
     setIsProcessing(true);
     
     // Simulating processing time
